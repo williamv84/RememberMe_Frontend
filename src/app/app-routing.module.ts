@@ -5,11 +5,12 @@ import { ListaTareasComponent } from './tareas/components/lista-tareas/lista-tar
 
 const routes: Routes = [{
   path: '',
-    component: ListaTareasComponent
+  component: ListaTareasComponent
 
 },
-{path: 'tableros',
-component: ListaTablerosComponent
+{
+  path: 'tableros',
+  component: ListaTablerosComponent
 
 }];
 
