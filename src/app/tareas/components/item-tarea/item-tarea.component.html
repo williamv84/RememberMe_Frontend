@@ -1,7 +1,7 @@
-<div class="card" style="width: 18rem;">
+<!-- <div class="card" style="width: 18rem;">
     <div class="card-body">
       <h5 class="card-title">
-          
+
         {{item.titulo}}
       </h5>
       <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
@@ -10,4 +10,59 @@
       <a href="#" class="card-link">Another link</a>
     </div>
   </div>
-  
+   -->
+
+
+<div class="card shadow mt-2" (click)="openDialog(item)">
+  <div class="card-body px-2 py-2  ">
+    <div class="row align-content-between    p-0 ">
+      <div class="col-11   p-0 ">
+        <div class="row  p-0 px-2">
+          <div class="col-1  ">
+            <img src="{{iconoPrioridad}}" alt="image" style="width:20px">
+          </div>
+          <div class="col-11">
+
+            {{item.titulo}}
+
+          </div>
+
+        </div>
+        <div class="row  p-0 ">
+          <div class="col-8 ">
+            <div class="row  py-0 ps-1">
+              <div class="col-6 ">
+                <div class="d-flex " matTooltip="Fecha límite" matTooltipClass="custom-tooltip">
+                  <mat-icon>date_range</mat-icon>
+                  <span class=" align-middle ms-1">2021-11-01</span>
+                </div>
+
+              </div>
+              <div class="col-6 align-middle" matTooltip="Tarea que debería estar Finalizada"
+                matTooltipClass="custom-tooltip">
+                Atrazadas
+              </div>
+            </div>
+
+          </div>
+          <div class="col-4 align-middle">
+            <div class="row  p-0 px-2 " matTooltip="Progeso" matTooltipClass="custom-tooltip">
+              <div class="col-4 bg-danger text-danger">
+                d
+              </div>
+              <div class="col-4 bg-secondary text-secondary">
+                d
+              </div>
+              <div class="col-4 bg-warning text-warning">
+                s
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1 p-0 align-self-end" matTooltip="Tarea Repetitiva" matTooltipClass="custom-tooltip">
+        <mat-icon>refresh</mat-icon>
+      </div>
+    </div>
+  </div>
+</div>

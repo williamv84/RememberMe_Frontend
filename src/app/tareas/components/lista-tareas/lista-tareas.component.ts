@@ -8,8 +8,9 @@ import { TareasServiceService } from 'src/app/services/tareas-service.service';
   styleUrls: ['./lista-tareas.component.css']
 })
 export class ListaTareasComponent implements OnInit {
-listaTareas: Tarea []=[];
-  constructor(private tareaService:TareasServiceService) { }
+  listaTareas: Tarea[] = [];
+
+  constructor(private tareaService: TareasServiceService) { }
 
   ngOnInit(): void {
     this.tareaService.getTareas().subscribe(tareas => {

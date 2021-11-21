@@ -1,0 +1,44 @@
+<div>
+  <h4 class="text-center">Detalle de la Tarea</h4>
+  <h1 mat-dialog-title>Hi {{ datoTarea.titulo }}</h1>
+  <mat-divider></mat-divider>
+
+  <mat-form-field class="example-form-field" appearance="outline">
+    <mat-label>Clearable input</mat-label>
+    <input matInput type="text" [(ngModel)]="datoTarea.titulo">
+    <button *ngIf="datoTarea.titulo" matSuffix mat-icon-button aria-label="Clear" (click)="datoTarea.titulo=''">
+      <mat-icon>close</mat-icon>
+    </button>
+  </mat-form-field>
+  <mat-divider></mat-divider>
+  <div>
+    <div class="row">
+      <div class="col">
+        Prioridad
+      </div>
+      <div class="col-auto text-wrap">
+
+        <img src="./assets/img/cuno.png" alt="image" style="width:20px" (click)="prioridad(1)">
+        <img src="./assets/img/cdos.png" alt="image" style="width:20px" (click)="prioridad(2)">
+        <img src="./assets/img/ctres.png" alt="image" style="width:20px" (click)="prioridad(3)">
+        <img src="./assets/img/ccuatro.png" alt="image" style="width:20px" (click)="prioridad(4)">
+        <img src="./assets/img/ccinco.png" alt="image" style="width:20px" (click)="prioridad(5)">
+
+      </div>
+    </div>
+  </div>
+  <mat-divider></mat-divider>
+  <mat-divider></mat-divider>
+  Prio: {{ datoTarea.prioridad }}
+  <div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field appearance="fill">
+      <mat-label>Favorite Animal</mat-label>
+      <!-- <input matInput [(ngModel)]="data.animal"> -->
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
+    <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+  </div>
+</div>
