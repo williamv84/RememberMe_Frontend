@@ -1,44 +1,115 @@
 <div>
   <h4 class="text-center">Detalle de la Tarea</h4>
-  <h1 mat-dialog-title>Hi {{ datoTarea.titulo }}</h1>
+
   <mat-divider></mat-divider>
 
-  <mat-form-field class="example-form-field" appearance="outline">
-    <mat-label>Clearable input</mat-label>
-    <input matInput type="text" [(ngModel)]="datoTarea.titulo">
-    <button *ngIf="datoTarea.titulo" matSuffix mat-icon-button aria-label="Clear" (click)="datoTarea.titulo=''">
-      <mat-icon>close</mat-icon>
-    </button>
-  </mat-form-field>
+
+  <!-- <div class="form-floating mb-3 col-12">
+    <input type="email" class="form-control" id="floatingInput" placeholder="Título de la Tarea"
+      [(ngModel)]="datoTarea.titulo" maxlength="50">
+    <label for="floatingInput">Título</label>
+  </div> -->
+
+  <div class="row">
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Título</mat-label>
+      <input matInput type="text" [(ngModel)]="datoTarea.titulo">
+      <button *ngIf="datoTarea.titulo" matSuffix mat-icon-button aria-label="Clear" (click)="datoTarea.titulo=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+  <div class="row">
+    <mat-form-field class="example-form-field" appearance="fill">
+      <mat-label>Descripción</mat-label>
+      <input matInput type="text" [(ngModel)]="datoTarea.descripcion">
+      <button *ngIf="datoTarea.descripcion" matSuffix mat-icon-button aria-label="Clear"
+        (click)="datoTarea.descripcion=''">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+  </div>
+
+  <!-- <div class="form-floating mb-3 col-12">
+    <input type="email" class="form-control" id="floatingInput" placeholder="Descriptión de la Tarea"
+      [(ngModel)]="datoTarea.descripcion" maxlength="50">
+    <label for="floatingInput">Descripción</label>
+  </div> -->
+
+
+
   <mat-divider></mat-divider>
   <div>
-    <div class="row">
+    <div class="row mt-2 mb-2">
       <div class="col">
         Prioridad
       </div>
-      <div class="col-auto text-wrap">
+      <div class="col-auto ">
 
-        <img src="./assets/img/cuno.png" alt="image" style="width:20px" (click)="prioridad(1)">
-        <img src="./assets/img/cdos.png" alt="image" style="width:20px" (click)="prioridad(2)">
-        <img src="./assets/img/ctres.png" alt="image" style="width:20px" (click)="prioridad(3)">
-        <img src="./assets/img/ccuatro.png" alt="image" style="width:20px" (click)="prioridad(4)">
-        <img src="./assets/img/ccinco.png" alt="image" style="width:20px" (click)="prioridad(5)">
+        <img src="./assets/img/cuno.png" alt="image" style="width:20px" (click)="prioridad(1)"
+          class="me-2 {{ bgcolor1 }} py-1">
+        <img src="./assets/img/cdos.png" alt="image" style="width:20px" (click)="prioridad(2)"
+          class="me-2 {{ bgcolor2 }} py-1">
+        <img src="./assets/img/ctres.png" alt="image" style="width:20px" (click)="prioridad(3)"
+          class="me-2 {{ bgcolor3 }} py-1">
+        <img src="./assets/img/ccuatro.png" alt="image" style="width:20px" (click)="prioridad(4)"
+          class="me-2 {{ bgcolor4 }} py-1">
+        <img src="./assets/img/ccinco.png" alt="image" style="width:20px" (click)="prioridad(5)"
+          class="{{ bgcolor5 }}  py-1">
+
+
 
       </div>
     </div>
   </div>
   <mat-divider></mat-divider>
-  <mat-divider></mat-divider>
-  Prio: {{ datoTarea.prioridad }}
-  <div mat-dialog-content>
-    <p>What's your favorite animal?</p>
+
+  <!-- <input class="date-field" [matDatepicker]="picker" [(ngModel)]="datoTarea.fechalimite" placeholder="Seleccione fecha"
+    value="{{ datoTarea.fechalimite }}">
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-datepicker #picker></mat-datepicker> -->
+
+  <div class="row">
     <mat-form-field appearance="fill">
-      <mat-label>Favorite Animal</mat-label>
-      <!-- <input matInput [(ngModel)]="data.animal"> -->
+      <mat-label>Selecciona Fecha</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="datoTarea.fechalimite">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
   </div>
-  <div mat-dialog-actions>
-    <!-- <button mat-button (click)="onNoClick()">No Thanks</button> -->
-    <!-- <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button> -->
+
+
+
+  <mat-divider></mat-divider>
+
+  <div class="row  p-0 px-2 my-2" matTooltip="Progeso" matTooltipClass="custom-tooltip">
+
+    <div class="col-6 text-nowrap">
+      Progreso
+    </div>
+    <div class="col-2 {{color1}} text-danger" (click)="cambiaEstado(1)">
+      -
+    </div>
+    <div class="col-2 {{color2}} text-secondary" (click)="cambiaEstado(2)">
+      -
+    </div>
+    <div class="col-2 {{color3}} text-warning" (click)="cambiaEstado(3)">
+      -
+    </div>
   </div>
-</div>
+
+
+  <mat-divider></mat-divider>
+  <div mat-dialog-actions class="row justify-content-center">
+
+    <button mat-flat-button color="primary" [mat-dialog-close] class="py-0 my-3" (click)="aceptar()">Actualizar</button>
+  </div>
+
+
+
+  <mat-divider></mat-divider>
+  {{ datoTarea | json }}
+  <!-- <mat-divider></mat-divider> -->

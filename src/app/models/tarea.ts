@@ -3,5 +3,7 @@ export class Tarea {
   titulo: string = '';
   descripcion: string = '';
   prioridad: number = 0;
+  fechalimite: string = '';
+  estado: number = 0;
 
 }

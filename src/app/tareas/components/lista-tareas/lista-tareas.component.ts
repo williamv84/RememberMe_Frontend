@@ -16,7 +16,7 @@ export class ListaTareasComponent implements OnInit {
     this.tareaService.getTareas().subscribe(tareas => {
       this.listaTareas = tareas;
       const lista = JSON.stringify(tareas);
-      console.log(lista);
+      // console.log(lista);
 
     });
 

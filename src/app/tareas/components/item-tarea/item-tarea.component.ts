@@ -2,6 +2,7 @@ import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { Tarea } from '../../../models/tarea';
 import { MatDialog } from '@angular/material/dialog';
 import { TareaDetailComponent } from '../tarea-detail/tarea-detail.component';
+import { DateAdapter } from '@angular/material/core';
 
 
 
@@ -14,11 +15,15 @@ import { TareaDetailComponent } from '../tarea-detail/tarea-detail.component';
 export class ItemTareaComponent implements OnInit {
   @Input() item: Tarea = new Tarea();
 
-
+  color1: string = "";
+  color2: string = "";
+  color3: string = "";
   iconoPrioridad: string = "";
 
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private dateAdapter: DateAdapter<Date>) {
+    this.dateAdapter.setLocale('es-CO'); //dd/MM/yyyy
+  }
 
   ngOnInit(): void {
 
@@ -42,6 +47,8 @@ export class ItemTareaComponent implements OnInit {
         break;
     }
 
+    this.cambiaEstado(this.item.estado);
+
 
 
   }
@@ -50,6 +57,27 @@ export class ItemTareaComponent implements OnInit {
     // console.log(item)
 
     let dialogRef = this.dialog.open(TareaDetailComponent, { data: { item: item } })
+  }
+
+  cambiaEstado(estado: number) {
+    switch (estado) {
+
+      case 1:
+        this.color1 = "bg-danger";
+        this.color2 = "bg-white";
+        this.color3 = "bg-white";
+        break;
+      case 2:
+        this.color1 = "bg-danger";
+        this.color2 = "bg-secondary";
+        this.color3 = "bg-white";
+        break;
+      case 3:
+        this.color1 = "bg-danger";
+        this.color2 = "bg-secondary";
+        this.color3 = "bg-warning";
+        break;
+    }
   }
 
 }

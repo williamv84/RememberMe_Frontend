@@ -1,7 +1,32 @@
-<div class="px-3 col-md-8 col-sm-12 offset-md-2 col-lg-6 offset-lg-3">
+<div class="px-3 col-md-8 col-sm-12 offset-md-2 col-lg-6 offset-lg-3 mt-2">
+
+  <div class="row">
+    <mat-form-field appearance="fill">
+      <mat-label>Categoria</mat-label>
+      <select matNativeControl>
+        <option value="" selected></option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="mercedes">Mercedes</option>
+        <option value="audi">Audi</option>
+      </select>
+    </mat-form-field>
+  </div>
+
+
   <app-item-tarea *ngFor="let item of listaTareas" [item]="item">
 
   </app-item-tarea>
 
+  <div class="row mt-1">
+    <div class="form-floating mb-3 col">
+      <input type="text" class="form-control" id="floatingInput" placeholder="Descriptión de la Tarea" maxlength="50">
+      <label for="floatingInput">Tarea Rápida</label>
+
+    </div>
+    <div class="col-auto p-0 me-3">
+      <button mat-raised-button color="primary" [mat-dialog-close] class="text-center my-3">Agregar</button>
+    </div>
+  </div>
 
 </div>

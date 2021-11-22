@@ -15,6 +15,10 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+
 
 
 
@@ -36,6 +40,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTooltipModule,
     BrowserAnimationsModule,
     MatDialogModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ]
   , exports: [
     MatCardModule,
@@ -51,8 +58,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatTooltipModule,
     BrowserAnimationsModule,
     MatDialogModule,
-    MatFormFieldModule
-
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule
   ]
 })
 export class AngularMaterialModule { }

@@ -34,7 +34,7 @@
               <div class="col-6 ">
                 <div class="d-flex " matTooltip="Fecha límite" matTooltipClass="custom-tooltip">
                   <mat-icon>date_range</mat-icon>
-                  <span class=" align-middle ms-1">2021-11-01</span>
+                  <span class=" align-middle ms-1"> {{ item.fechalimite | date : 'dd/MM/yyyy' }} </span>
                 </div>
 
               </div>
@@ -47,14 +47,14 @@
           </div>
           <div class="col-4 align-middle">
             <div class="row  p-0 px-2 " matTooltip="Progeso" matTooltipClass="custom-tooltip">
-              <div class="col-4 bg-danger text-danger">
-                d
+              <div class="col-2 {{color1}} text-danger">
+                -
               </div>
-              <div class="col-4 bg-secondary text-secondary">
-                d
+              <div class="col-2 {{color2}} text-secondary">
+                -
               </div>
-              <div class="col-4 bg-warning text-warning">
-                s
+              <div class="col-2 {{color3}} text-warning">
+                -
               </div>
             </div>
           </div>

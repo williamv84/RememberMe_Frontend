@@ -8,10 +8,13 @@ import { TareasServiceService } from './services/tareas-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TareasModule } from './tareas/tareas.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { MatInputModule } from '@angular/material/input';
 import { FormsModule } from "@angular/forms";
 import 'hammerjs';
+
+import { MatInputModule } from '@angular/material/input';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -27,8 +30,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TareasModule,
     AngularMaterialModule,
     MatInputModule,
+    MatFormFieldModule,
     FormsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
   providers: [
     TareasServiceService

@@ -10,13 +10,17 @@ export class TareasServiceService {
 
   constructor(private http: HttpClient) { }
 
-    url: string = 'https://remembermebackend.herokuapp.com/api/';
+  url: string = 'https://remembermebackend.herokuapp.com/api/';
   items: Tarea[] = [];
   getTareas(): Observable<Tarea[]> {
-  console.log(this.http.get<Tarea[]>(this.url + '/tareas'))
+    // console.log(this.http.get<Tarea[]>(this.url + '/tareas'))
     // return this.items;
-    return this.http.get<Tarea[]>(this.url + '/tareas');
+    return this.http.get<Tarea[]>(this.url + 'tareas');
 
+  }
+
+  updateTarea(id: number, data: Tarea): Observable<any> {
+    return this.http.put(this.url + 'tareas' + '/' + id, data);
   }
 
 }
