@@ -23,4 +23,8 @@ export class TareasServiceService {
     return this.http.put(this.url + 'tareas' + '/' + id, data);
   }
 
+  createTarea(data: Tarea): Observable<any> {
+    return this.http.post(this.url + 'tareas/', data);
+  }
+
 }
