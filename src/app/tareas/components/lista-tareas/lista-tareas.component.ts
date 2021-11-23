@@ -9,17 +9,17 @@ import { TareasServiceService } from 'src/app/services/tareas-service.service';
 })
 export class ListaTareasComponent implements OnInit {
   listaTareas: Tarea[] = [];
-  tituloNuevaTarea: string="";
+  tituloNuevaTarea: string = "";
 
   constructor(private tareaService: TareasServiceService) { }
 
   ngOnInit(): void {
     this.traerTareas();
-    
+
 
   }
 
-  traerTareas(){
+  traerTareas() {
     this.tareaService.getTareas().subscribe(tareas => {
       this.listaTareas = tareas;
       const lista = JSON.stringify(tareas);
@@ -28,19 +28,24 @@ export class ListaTareasComponent implements OnInit {
     });
 
   }
-  tareaRapida(){
-    console.log(this.tituloNuevaTarea);
-    let nuevaTarea=new Tarea();
-    nuevaTarea.titulo=this.tituloNuevaTarea;
-    nuevaTarea.descripcion="";
-    nuevaTarea.id_usuario=1;
+  tareaRapida() {
+    // console.log(this.tituloNuevaTarea);
+    let nuevaTarea = new Tarea();
+    nuevaTarea.titulo = this.tituloNuevaTarea;
+    nuevaTarea.descripcion = "";
+    nuevaTarea.id_usuario = 1;
     this.tareaService.createTarea(nuevaTarea).subscribe(tareas => {
 
       const lista = JSON.stringify(tareas);
-      console.log(lista);
-      this.tituloNuevaTarea="";
-      this.traerTareas();
+      // console.log(tareas.body.tarea);
+      this.tituloNuevaTarea = "";
+      // this.traerTareas();
+      let tareaJustCreated = new Tarea();
+      tareaJustCreated = tareas.body.tarea;
+      this.listaTareas.push(tareaJustCreated);
+
     });
+
   }
 
 }

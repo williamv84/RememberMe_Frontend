@@ -18,14 +18,16 @@
 
   </app-item-tarea>
 
-  <div class="row mt-1">
+  <div class=" row mt-1">
     <div class="form-floating mb-3 col">
-      <input [(ngModel)]="tituloNuevaTarea" type="text" class="form-control" id="floatingInput" placeholder="Descriptión de la Tarea" maxlength="50">
+      <input [(ngModel)]="tituloNuevaTarea" type="text" class="form-control" id="floatingInput"
+        placeholder="Descriptión de la Tarea" maxlength="50">
       <label for="floatingInput">Tarea Rápida</label>
 
     </div>
     <div class="col-auto p-0 me-3">
-      <button mat-raised-button (click)="tareaRapida()" color="primary" [mat-dialog-close] class="text-center my-3">Agregar</button>
+      <button mat-raised-button (click)="tareaRapida()" color="primary" [mat-dialog-close]
+        class="text-center my-3">Agregar</button>
     </div>
   </div>
 

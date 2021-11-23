@@ -1,8 +1,9 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { Tarea } from '../../../models/tarea';
 import { MatDialog } from '@angular/material/dialog';
 import { TareaDetailComponent } from '../tarea-detail/tarea-detail.component';
 import { DateAdapter } from '@angular/material/core';
+import * as moment from 'moment';
 
 
 
@@ -15,10 +16,15 @@ import { DateAdapter } from '@angular/material/core';
 export class ItemTareaComponent implements OnInit {
   @Input() item: Tarea = new Tarea();
 
+
   color1: string = "";
   color2: string = "";
   color3: string = "";
   iconoPrioridad: string = "";
+
+  colorAtrasada: string = "text-white";
+  colorFecha: string = "text-dark";
+
 
 
   constructor(public dialog: MatDialog, private dateAdapter: DateAdapter<Date>) {
@@ -48,7 +54,11 @@ export class ItemTareaComponent implements OnInit {
     }
 
     this.cambiaEstado(this.item.estado);
-
+    let fechaActual = new Date();
+    if (this.isDatesEqual(this.item.fechalimite, fechaActual)) {
+      this.colorAtrasada = "text-danger"
+      this.colorFecha = "text-danger"
+    }
 
 
   }
@@ -79,5 +89,15 @@ export class ItemTareaComponent implements OnInit {
         break;
     }
   }
+
+
+  isDatesEqual(date1: string, date2: Date) {
+
+    let date3: Date = new Date(date1);
+
+    // console.log(date3 + "-" + date2);
+    return moment(date3).isBefore(date2);
+  }
+
 
 }
