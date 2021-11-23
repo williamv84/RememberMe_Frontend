@@ -26,6 +26,9 @@ export class TareaDetailComponent implements OnInit {
   bgcolor4: string = "";
   bgcolor5: string = "";
 
+  fechaLimiteDetalle: string="";
+
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dateAdapter: DateAdapter<Date>, private tareaService: TareasServiceService) {
     this.dateAdapter.setLocale('es-CO'); //dd/MM/yyyy
   }
@@ -34,6 +37,7 @@ export class TareaDetailComponent implements OnInit {
     this.datoTarea = this.data.item;
     this.cambiaEstado(this.datoTarea.estado);
     this.prioridad(this.datoTarea.prioridad);
+    this.fechaLimiteDetalle= this.datoTarea.fechalimite;
   }
 
   prioridad(priorSel: number): void {
@@ -93,6 +97,7 @@ export class TareaDetailComponent implements OnInit {
   }
 
   aceptar(): void {
+    this.datoTarea.fechalimite=this.fechaLimiteDetalle;
     this.tareaService.updateTarea(this.datoTarea.id, this.datoTarea).subscribe(tareas => {
 
       const lista = JSON.stringify(tareas);
