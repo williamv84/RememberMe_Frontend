@@ -3,6 +3,6 @@ export class Bitacora {
   descripcion: string = '';
   id_tareas: number = 0;
   id_usuario: number = 0;
-  created_at: string = '';
+  create_at: string = '';
 
 }

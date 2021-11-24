@@ -4,6 +4,9 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
 import { ListaBitacoraComponent } from './components/lista-bitacora/lista-bitacora.component';
 import { BitacoraService } from '../services/bitacora.service';
 import { ItemBitacoraComponent } from './components/item-bitacora/item-bitacora.component';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from "@angular/forms";
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 @NgModule({
@@ -15,7 +18,9 @@ import { ItemBitacoraComponent } from './components/item-bitacora/item-bitacora.
   imports: [
     CommonModule,
     AngularMaterialModule,
-
+    MatInputModule,
+    FormsModule,
+    MatFormFieldModule
   ],
   providers: [
     BitacoraService,
