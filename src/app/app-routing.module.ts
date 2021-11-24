@@ -12,7 +12,8 @@ const routes: Routes = [{
   path: 'tableros',
   component: ListaTablerosComponent
 
-}];
+}
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

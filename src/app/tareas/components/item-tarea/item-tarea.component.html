@@ -13,7 +13,7 @@
    -->
 
 
-<div class="card shadow mt-2" (click)="openDialog(item)">
+<div class="card mt-2" (click)="openDialog(item)">
   <div class="card-body px-2 py-2  ">
     <div class="row align-content-between    p-0 ">
       <div class="col-11   p-0 ">
@@ -32,13 +32,14 @@
           <div class="col-8 ">
             <div class="row  py-0 ps-1">
               <div class="col-6 ">
-                <div class="d-flex " matTooltip="Fecha límite" matTooltipClass="custom-tooltip">
+                <div class="d-flex  {{ colorFecha }}" matTooltip="Fecha límite" matTooltipClass="custom-tooltip">
                   <mat-icon>date_range</mat-icon>
-                  <span class=" align-middle ms-1"> {{ item.fechalimite | date : 'dd/MM/yyyy' }} </span>
+                  <span class=" align-middle ms-1"> {{ item.fechalimite | date :
+                    'dd/MM/yyyy' }} </span>
                 </div>
 
               </div>
-              <div class="col-6 align-middle" matTooltip="Tarea que debería estar Finalizada"
+              <div class="col-6 align-middle {{ colorAtrasada }}" matTooltip="Tarea que debería estar Finalizada"
                 matTooltipClass="custom-tooltip">
                 Atrasadas
               </div>
@@ -46,14 +47,14 @@
 
           </div>
           <div class="col-4 align-middle">
-            <div class="row  p-0 px-2 " matTooltip="Progeso" matTooltipClass="custom-tooltip">
-              <div class="col-2 border {{color1}} text-danger">
+            <div class="row p-0 m-0 border border-dark">
+              <div class="col-4 {{color1}} text-danger" (click)="cambiaEstado(1)">
                 -
               </div>
-              <div class="col-2 border {{color2}} text-secondary">
+              <div class="col-4 {{color2}} text-secondary" (click)="cambiaEstado(2)">
                 -
               </div>
-              <div class="col-2 border {{color3}} text-warning">
+              <div class="col-4 {{color3}} text-warning" (click)="cambiaEstado(3)">
                 -
               </div>
             </div>
