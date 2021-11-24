@@ -7,6 +7,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { TareasServiceService } from './services/tareas-service.service';
 import { HttpClientModule } from '@angular/common/http';
 import { TareasModule } from './tareas/tareas.module';
+import { BitacoraModule } from './bitacora/bitacora.module';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { FormsModule } from "@angular/forms";
 import 'hammerjs';
@@ -15,6 +16,8 @@ import { MatInputModule } from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { BitacoraService } from './services/bitacora.service';
+
 
 
 
@@ -23,21 +26,23 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   declarations: [
     AppComponent,
     HeaderComponent,
-    
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    TareasModule,
     AngularMaterialModule,
+    TareasModule,
+    BitacoraModule,
     MatInputModule,
     MatFormFieldModule,
     FormsModule,
     BrowserAnimationsModule,
   ],
   providers: [
-    TareasServiceService
+    TareasServiceService,
+    BitacoraService,
   ],
   bootstrap: [AppComponent]
 })
