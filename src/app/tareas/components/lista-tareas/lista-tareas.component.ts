@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Tarea } from 'src/app/models/tarea';
 import { TareasServiceService } from 'src/app/services/tareas-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { duration } from 'moment';
 
 @Component({
   selector: 'app-lista-tareas',
@@ -10,8 +12,9 @@ import { TareasServiceService } from 'src/app/services/tareas-service.service';
 export class ListaTareasComponent implements OnInit {
   listaTareas: Tarea[] = [];
   tituloNuevaTarea: string = "";
+  selected = 'none';
 
-  constructor(private tareaService: TareasServiceService) { }
+  constructor(private tareaService: TareasServiceService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.traerTareas();
@@ -43,6 +46,8 @@ export class ListaTareasComponent implements OnInit {
       let tareaJustCreated = new Tarea();
       tareaJustCreated = tareas.body.tarea;
       this.listaTareas.push(tareaJustCreated);
+
+      this._snackBar.open("Tarea Creada", 'Dismiss', { duration: 2000, verticalPosition: 'bottom', panelClass: ['red-snackbar'] });
 
     });
 

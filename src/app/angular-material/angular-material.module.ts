@@ -18,6 +18,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -42,7 +43,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatDialogModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule,
   ]
   , exports: [
     MatCardModule,
@@ -61,7 +63,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSnackBarModule
   ]
 })
 export class AngularMaterialModule { }

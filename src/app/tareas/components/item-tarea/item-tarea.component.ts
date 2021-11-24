@@ -66,7 +66,7 @@ export class ItemTareaComponent implements OnInit {
   openDialog(item: Tarea): void {
     // console.log(item)
 
-    let dialogRef = this.dialog.open(TareaDetailComponent, { data: { item: item } })
+    const dialogRef = this.dialog.open(TareaDetailComponent, { data: { item: item } })
   }
 
   cambiaEstado(estado: number) {

@@ -4,6 +4,7 @@ import { Tarea } from '../../../models/tarea';
 import { DateAdapter } from '@angular/material/core';
 import { TareasServiceService } from 'src/app/services/tareas-service.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -21,16 +22,19 @@ export class TareaDetailComponent implements OnInit {
   color2: string = "";
   color3: string = "";
 
-  bgcolor1: string = "";
-  bgcolor2: string = "";
-  bgcolor3: string = "";
-  bgcolor4: string = "";
-  bgcolor5: string = "";
+  bgcolor1: string = "#FFFFFF";
+  bgcolor2: string = "#FFFFFF";
+  bgcolor3: string = "#FFFFFF";
+  bgcolor4: string = "#FFFFFF";
+  bgcolor5: string = "#FFFFFF";
+
+  checked: boolean = false;
+  habilita: boolean = true;
 
   fechaLimiteDetalle: string = "";
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dateAdapter: DateAdapter<Date>, private tareaService: TareasServiceService,
-    private router: Router) {
+    private router: Router, private _snackBar: MatSnackBar) {
     this.dateAdapter.setLocale('es-CO'); //dd/MM/yyyy
   }
 
@@ -48,19 +52,19 @@ export class TareaDetailComponent implements OnInit {
     this.bgInitWhite();
     switch (priorSel) {
       case 1:
-        this.bgcolor1 = "bg-warning";
+        this.bgcolor1 = "#00FFFF";
         break;
       case 2:
-        this.bgcolor2 = "bg-warning";
+        this.bgcolor2 = "#00FFFF";
         break;
       case 3:
-        this.bgcolor3 = "bg-warning";
+        this.bgcolor3 = "#00FFFF";
         break;
       case 4:
-        this.bgcolor4 = "bg-dark";
+        this.bgcolor4 = "#00FFFF";
         break;
       case 5:
-        this.bgcolor5 = "bg-primary";
+        this.bgcolor5 = "#00FFFF";
         break;
     }
     // console.log(this.datoTarea.fechalimite);
@@ -68,11 +72,11 @@ export class TareaDetailComponent implements OnInit {
   }
 
   bgInitWhite() {
-    this.bgcolor1 = "bg-white";
-    this.bgcolor2 = "bg-white";
-    this.bgcolor3 = "bg-white";
-    this.bgcolor4 = "bg-white";
-    this.bgcolor5 = "bg-white";
+    this.bgcolor1 = "#FFFFFF";
+    this.bgcolor2 = "#FFFFFF";
+    this.bgcolor3 = "#FFFFFF";
+    this.bgcolor4 = "#FFFFFF";
+    this.bgcolor5 = "#FFFFFF";
   }
 
   cambiaEstado(estado: number) {
@@ -118,5 +122,20 @@ export class TareaDetailComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([ruta]);
   }
+
+  eliminar() {
+    console.log("Click eliminar");
+    this._snackBar.open("Tarea Eliminada", 'Dismiss', { duration: 3000, verticalPosition: 'bottom', panelClass: ['red-snackbar'] });
+    this.navigate("/");
+  }
+
+  esChecked(): void {
+    {
+      if (this.checked) {
+        this.habilita = true;
+      }
+    }
+  }
+
 
 }

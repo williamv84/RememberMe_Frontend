@@ -10,6 +10,7 @@ import { TareaDetailComponent } from './components/tarea-detail/tarea-detail.com
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 
 
@@ -30,6 +31,7 @@ import { AngularMaterialModule } from '../angular-material/angular-material.modu
     AngularMaterialModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    ScrollingModule
   ],
   providers: [
     TareasServiceService
