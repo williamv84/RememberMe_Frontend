@@ -1,3 +1,28 @@
-<app-header></app-header>
+<mat-sidenav-container>
+  <mat-sidenav #sidenav mode="side">
+    <mat-toolbar>
+      <span class="bg-primary">Menu</span>
+    </mat-toolbar>
+
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>RememberMe</span>
+      <span class="example-spacer"></span>
+      <div>
+        <a mat-button [routerLink]="'login'" class="example-icon">Login</a>
+        <a mat-button class="example-icon">Logout</a>
+      </div>
+
+    </mat-toolbar>
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+
+</mat-sidenav-container>
+
+
 <!-- <mat-icon>favorite</mat-icon> -->
-<router-outlet></router-outlet>
