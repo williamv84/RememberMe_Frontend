@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { BitacoraService } from './services/bitacora.service';
 import { CategoriasModule } from './categorias/categorias.module';
+import { LoginModule } from './auth/login/login.module';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { CategoriasModule } from './categorias/categorias.module';
     MatFormFieldModule,
     FormsModule,
     BrowserAnimationsModule,
-    CategoriasModule
+    CategoriasModule,
+    LoginModule
   ],
   providers: [
     TareasServiceService,
