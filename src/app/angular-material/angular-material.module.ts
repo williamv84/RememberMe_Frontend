@@ -19,6 +19,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 
@@ -44,6 +46,8 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTableModule
+
   ]
   , exports: [
     MatCardModule,
@@ -64,6 +68,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatNativeDateModule,
     MatSelectModule,
     MatSnackBarModule,
+    MatTableModule
   ]
 })
 export class AngularMaterialModule { }

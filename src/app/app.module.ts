@@ -16,8 +16,12 @@ import { MatInputModule } from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+<<<<<<< HEAD
 import { BitacoraService } from './services/bitacora.service';
 
+=======
+import { CategoriasModule } from './categorias/categorias.module';
+>>>>>>> 950f7f8a5e1b011304d690c8532cbc204db60f67
 
 
 
@@ -39,6 +43,7 @@ import { BitacoraService } from './services/bitacora.service';
     MatFormFieldModule,
     FormsModule,
     BrowserAnimationsModule,
+    CategoriasModule
   ],
   providers: [
     TareasServiceService,
