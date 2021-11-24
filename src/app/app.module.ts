@@ -16,12 +16,11 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { BitacoraService } from './services/bitacora.service';
 import { CategoriasModule } from './categorias/categorias.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-  ],
+    ],
   imports: [
     BrowserModule,
     AppRoutingModule,
