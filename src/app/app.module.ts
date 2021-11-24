@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { CategoriasModule } from './categorias/categorias.module';
 
 
 
@@ -35,6 +36,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     FormsModule,
     BrowserAnimationsModule,
+    CategoriasModule
   ],
   providers: [
     TareasServiceService
