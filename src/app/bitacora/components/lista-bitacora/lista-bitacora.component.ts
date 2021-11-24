@@ -11,6 +11,9 @@ import { Bitacora } from '../../../models/bitacora';
 export class ListaBitacoraComponent implements OnInit {
   listaBitacora: Bitacora[] = [];
 
+  dataSource: any;
+
+  displayedColumns: string[] = ['id', 'descripcion', 'id_treas', 'id_usuario', 'create_at'];
   constructor(private bitacoraService: BitacoraService) { }
 
   ngOnInit(): void {
@@ -25,7 +28,7 @@ export class ListaBitacoraComponent implements OnInit {
       this.listaBitacora = bitacoras;
       const lista = JSON.stringify(bitacoras);
       console.log(lista);
-
+      this.dataSource = this.listaBitacora;
     });
   }
 
