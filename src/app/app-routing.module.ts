@@ -5,10 +5,12 @@ import { ListaCategoriasComponent } from './categorias/components/lista-categori
 import { ListaTablerosComponent } from './tableros/components/lista-tableros/lista-tableros.component';
 import { ListaTareasComponent } from './tareas/components/lista-tareas/lista-tareas.component';
 import { AboutComponent } from './components/about/about.component';
+import { LoginUsuariosComponent } from './usuarios/components/login-usuarios/login-usuarios.component';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [{
   path: '',
-  component: ListaTareasComponent
+  component: LoginUsuariosComponent
 
 },
 {
@@ -17,9 +19,12 @@ const routes: Routes = [{
 
 },
 {
-  path: 'bitacora',
-  component: ListaBitacoraComponent
+  path: 'bitacora', component: ListaBitacoraComponent, canActivate: [AuthGuard]
 },
+// {
+//   path: 'bitacora',
+//   component: ListaBitacoraComponent
+// },
 {
   path: 'categorias',
   component: ListaCategoriasComponent
@@ -29,6 +34,15 @@ const routes: Routes = [{
   path: 'about',
   component: AboutComponent
 
+},
+{
+  path: 'tareas',
+  component: ListaTareasComponent
+
+},
+{
+  path: 'login',
+  component: LoginUsuariosComponent
 }
 ];
 
