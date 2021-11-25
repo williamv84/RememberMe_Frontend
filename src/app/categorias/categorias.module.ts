@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { ListaCategoriasComponent } from './components/lista-categorias/lista-categorias.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { ItemCategoriasComponent } from './components/item-categorias/item-categorias.component';
+import { FormsModule } from "@angular/forms";
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -13,7 +16,10 @@ import { ItemCategoriasComponent } from './components/item-categorias/item-categ
   ],
   imports: [
     CommonModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    FormsModule,
+    MatInputModule,
+    MatFormFieldModule
   ]
 })
 export class CategoriasModule { }
