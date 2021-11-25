@@ -11,4 +11,8 @@
 
 a {
   color: #0d4b0b;
+  text-decoration: none;
+}
+a:link, a:visited {
+  color: #0d4b0b;
 }

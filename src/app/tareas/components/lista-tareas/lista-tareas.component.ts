@@ -3,6 +3,8 @@ import { Tarea } from 'src/app/models/tarea';
 import { TareasServiceService } from 'src/app/services/tareas-service.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { duration } from 'moment';
+import { BitacoraService } from 'src/app/services/bitacora.service';
+import { Bitacora } from '../../../models/bitacora';
 
 
 
@@ -16,7 +18,7 @@ export class ListaTareasComponent implements OnInit {
   tituloNuevaTarea: string = "";
   selected = 'none';
 
-  constructor(private tareaService: TareasServiceService, private _snackBar: MatSnackBar) { }
+  constructor(private tareaService: TareasServiceService, private _snackBar: MatSnackBar, private bitacoraService: BitacoraService) { }
 
   ngOnInit(): void {
     this.traerTareas();
@@ -51,8 +53,26 @@ export class ListaTareasComponent implements OnInit {
 
       this._snackBar.open("Tarea Creada", 'Dismiss', { duration: 2000, verticalPosition: 'bottom', panelClass: ['red-snackbar'] });
 
+      this.crearRegistroBitacora(tareaJustCreated);
+
     });
 
+  }
+
+  crearRegistroBitacora(tareaCreada: Tarea): void {
+    let bitacoraNew = new Bitacora();
+    bitacoraNew.descripcion = "Tarea Creada";
+    bitacoraNew.id_tareas = tareaCreada.id;
+    bitacoraNew.id_usuario = 1;
+
+    this.bitacoraService.createBitacora(bitacoraNew).subscribe(bitacora => {
+
+      const lista = JSON.stringify(bitacora);
+      console.log(lista);
+      let bicacoraJustCreated = new Bitacora();
+      bicacoraJustCreated = bitacora.body.tarea;
+      console.log(bicacoraJustCreated)
+    });
   }
 
 }
