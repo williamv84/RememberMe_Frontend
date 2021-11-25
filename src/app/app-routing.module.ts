@@ -4,6 +4,7 @@ import { ListaBitacoraComponent } from './bitacora/components/lista-bitacora/lis
 import { ListaCategoriasComponent } from './categorias/components/lista-categorias/lista-categorias.component';
 import { ListaTablerosComponent } from './tableros/components/lista-tableros/lista-tableros.component';
 import { ListaTareasComponent } from './tareas/components/lista-tareas/lista-tareas.component';
+import { AboutComponent } from './components/about/about.component';
 
 const routes: Routes = [{
   path: '',
@@ -18,11 +19,15 @@ const routes: Routes = [{
 {
   path: 'bitacora',
   component: ListaBitacoraComponent
-}
-  ,
+},
 {
   path: 'categorias',
   component: ListaCategoriasComponent
+
+},
+{
+  path: 'about',
+  component: AboutComponent
 
 }
 ];
