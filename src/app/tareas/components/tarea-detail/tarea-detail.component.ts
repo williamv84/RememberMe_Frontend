@@ -5,6 +5,8 @@ import { DateAdapter } from '@angular/material/core';
 import { TareasServiceService } from 'src/app/services/tareas-service.service';
 import { Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Bitacora } from '../../../models/bitacora';
+import { BitacoraService } from 'src/app/services/bitacora.service';
 
 
 
@@ -33,8 +35,11 @@ export class TareaDetailComponent implements OnInit {
 
   fechaLimiteDetalle: string = "";
 
+  estadoActualTarea: number = 0;
+  prioridadActualTarea: number = 0;
+
   constructor(@Inject(MAT_DIALOG_DATA) public data: any, private dateAdapter: DateAdapter<Date>, private tareaService: TareasServiceService,
-    private router: Router, private _snackBar: MatSnackBar) {
+    private router: Router, private _snackBar: MatSnackBar, private bitacoraService: BitacoraService) {
     this.dateAdapter.setLocale('es-CO'); //dd/MM/yyyy
   }
 
@@ -43,8 +48,8 @@ export class TareaDetailComponent implements OnInit {
     this.cambiaEstado(this.datoTarea.estado);
     this.prioridad(this.datoTarea.prioridad);
     this.fechaLimiteDetalle = this.datoTarea.fechalimite;
-
-
+    this.estadoActualTarea = this.datoTarea.estado;
+    this.prioridadActualTarea = this.datoTarea.prioridad;
   }
 
   prioridad(priorSel: number): void {
@@ -109,11 +114,51 @@ export class TareaDetailComponent implements OnInit {
 
       const lista = JSON.stringify(tareas);
       // console.log(lista);
+      // this.crearRegistroBitacora("Tarea Actualizada");
+      let texto: string = "Tarea Actualizada ";
+      if (this.estadoActualTarea != this.datoTarea.estado) {
+        switch (this.datoTarea.estado) {
 
-      this.navigate("/");
+          case 1:
+            texto += " Estado cambiado a Creado";
+            break;
+          case 2:
+            texto += " Estado cambiado a En Proceso";
+            break;
+          case 3:
+            texto += " Estado cambiado a Terminado";
+            break;
+        }
+      }
+
+      if (this.prioridadActualTarea != this.datoTarea.prioridad) {
+        texto += " Prioridad cambia a " + this.datoTarea.prioridad;
+      }
+
+      this.crearRegistroBitacora(texto);
+
+
+      this.navigate("/tareas");
 
     });
   }
+
+  crearRegistroBitacora(texto: string): void {
+    let bitacoraNew = new Bitacora();
+    bitacoraNew.descripcion = texto;
+    bitacoraNew.id_tareas = this.datoTarea.id;
+    bitacoraNew.id_usuario = 1;
+
+    this.bitacoraService.createBitacora(bitacoraNew).subscribe(bitacora => {
+
+      const lista = JSON.stringify(bitacora);
+      console.log(lista);
+      let bicacoraJustCreated = new Bitacora();
+      bicacoraJustCreated = bitacora.body.tarea;
+      console.log(bicacoraJustCreated)
+    });
+  }
+
 
 
   navigate(ruta: string) {
@@ -126,6 +171,7 @@ export class TareaDetailComponent implements OnInit {
   eliminar() {
     console.log("Click eliminar");
     this._snackBar.open("Tarea Eliminada", 'Dismiss', { duration: 3000, verticalPosition: 'bottom', panelClass: ['red-snackbar'] });
+    this.crearRegistroBitacora("Tarea Eliminada");
     this.navigate("/");
   }
 
