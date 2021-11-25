@@ -9,7 +9,10 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 
+import { MatDialog } from '@angular/material/dialog';
 
+import { ConfirmationDialogComponent } from '../confirmation-dialog/confirmation-dialog.component';
+import { CategoriaFormComponent } from '../categoria-form/categoria-form.component';
 
 @Component({
   selector: 'app-lista-categorias',
@@ -18,16 +21,16 @@ import { MatPaginator } from '@angular/material/paginator';
 })
 export class ListaCategoriasComponent implements OnInit {
   listaCategorias: Categoria[] = [];
-  displayedColumns: string[] = ['id', 'descripcion'];
+  displayedColumns: string[] = ['id', 'descripcion', 'actions'];
   dataSource: any;
   nombreCategoria: string = "";
 
   @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
   @ViewChild(MatSort, { static: false }) sort!: MatSort;
 
-  constructor(private categoriaService: CategoriasServiceService, private router: Router, private _snackBar: MatSnackBar
 
-  ) { }
+
+  constructor(private categoriaService: CategoriasServiceService, private router: Router, private _snackBar: MatSnackBar, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.traerCategorias(1);
@@ -37,7 +40,7 @@ export class ListaCategoriasComponent implements OnInit {
     this.categoriaService.getCategorias(id_usuario).subscribe(categorias => {
       this.listaCategorias = categorias;
       const lista = JSON.stringify(categorias);
-      console.log(lista);
+      // console.log(lista);
       this.dataSource = new MatTableDataSource(this.listaCategorias);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
@@ -89,5 +92,48 @@ export class ListaCategoriasComponent implements OnInit {
     this.router.onSameUrlNavigation = 'reload';
     this.router.navigate([ruta]);
   }
+
+
+  edit(data: Categoria) {
+    const dialogRef = this.dialog.open(CategoriaFormComponent, {
+      width: '400px',
+      data: data
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+
+      // console.log(result);
+      if (result) {
+        this.categoriaService.updateCategorias(result.id, result).subscribe(categorias => {
+
+          const lista = JSON.stringify(categorias);
+          // console.log("Respuesta despues Editar categoria: " + lista);
+          this.traerCategorias(1);
+
+        });
+      }
+    });
+  }
+
+  delete(id: any) {
+    console.log("El id: " + id);
+    const dialogRef = this.dialog.open(ConfirmationDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.categoriaService.removeCategoria(id).subscribe(categorias => {
+
+          const lista = JSON.stringify(categorias);
+          // console.log("Respuesta despues Editar categoria: " + lista);
+          this.traerCategorias(1);
+
+        });
+      }
+    });
+  }
+
+
+
+
 
 }

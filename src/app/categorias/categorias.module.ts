@@ -6,13 +6,17 @@ import { ItemCategoriasComponent } from './components/item-categorias/item-categ
 import { FormsModule } from "@angular/forms";
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { ConfirmationDialogComponent } from './components/confirmation-dialog/confirmation-dialog.component';
+import { CategoriaFormComponent } from './components/categoria-form/categoria-form.component';
 
 
 
 @NgModule({
   declarations: [
     ListaCategoriasComponent,
-    ItemCategoriasComponent
+    ItemCategoriasComponent,
+    ConfirmationDialogComponent,
+    CategoriaFormComponent
   ],
   imports: [
     CommonModule,
